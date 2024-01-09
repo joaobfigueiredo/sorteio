@@ -1,0 +1,17 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+	
+		<div class="container">
+			<div th:replace="~{base :: titulo('Realizar o sorteio')}"></div>
+		
+		
+            <form action="#" th:action="@{/participante/sortear}" method="get">
+              
+                 <input type="submit" value="Sortear">   
+            </form>
+		
+		</div>
+	</body>
+</html>

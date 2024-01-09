@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<head th:replace="~{base :: head}"></head>
+	<body>
+	    <div th:replace="~{base :: logo}"></div>
+	
+		<div class="container">
+			<div th:replace="~{base :: titulo('Participantes')}"></div>
+
+			<div>
+				<table class="table table-bordered">
+					<thread class="thead-dark">
+						<tr>
+							<th>Identificador</th>
+							<th>Nome</th>
+							<th>Seguro Social</th>
+							<th>E-mail</th>
+							<th>Ações</th>
+						</tr>
+					</thread>
+					<tbody>
+						<th:block th:each="participante : ${participantes}">
+							<tr>
+								<td>[[${participante.id}]]</td>
+								<td>[[${participante.nome}]]</td>
+								<td>[[${participante.seguroSocial}]]</td>
+								<td>[[${participante.email}]]</td>
+        						<td>
+					          		<a th:href="@{'/participante/editar/' + ${participante.id}}" title="Editar este participante"
+					            	class="fa-regular fa-pen-to-square icon-dark"></a>
+					          		<a th:href="@{'/participante/remover/' + ${participante.id}}" title="Excluir este participante"
+					            	id="botaoExcluir" class="fa-solid fa-trash"></a>
+					            </td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+			
+			<p><a href="/participante/cadastro">Adicionar um novo participante</a></p>
+		</div>
+		
+	</body>
+</html>

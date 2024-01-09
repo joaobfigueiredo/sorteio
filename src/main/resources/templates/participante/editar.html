@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <head th:replace="~{base :: head}"></head>
+    </head>
+    <body>
+    	<div th:replace="~{base :: logo}"></div>
+    
+        <div class="container">
+			<div th:replace="~{base :: titulo('Participante')}"></div>
+
+            <form action="#" th:action="@{/participante/atualizar}" th:object="${participante}" method="post">
+	    		
+	    		
+	    		<input type="hidden" th:field="*{id}" />            
+            
+	    		
+	    		<div>
+                    <label for="identificador">Identificador: [[${participante.id}]]</label>
+                </div>            
+            
+                <div>
+                    <label for="nome">Nome</label>
+                    <input type="text" th:field="*{nome}" id="nome" placeholder="nome" required>
+                    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                </div>
+                <div>
+                    <label for="seguroSocial">Seguro Social</label>
+                    <input type="text" maxlength="9" pattern="[0-9]+$" th:field="*{seguroSocial}" id="seguroSocial" placeholder="Seguro Social" required> *Apenas números
+                    <span th:if="${#fields.hasErrors('seguroSocial')}" th:errors="*{seguroSocial}"></span>
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" th:field="*{email}" id="email" placeholder="E-mail" required>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
+                <input type="button" th:onclick="|window.location.href='/participante/listar'|" value="Voltar">                
+                <input type="submit" value="Salvar">   
+            </form>
+        </div>
+    </body>
+</html>

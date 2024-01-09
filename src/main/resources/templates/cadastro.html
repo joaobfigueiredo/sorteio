@@ -1,0 +1,34 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+	
+		<div class="container">
+			<div th:replace="~{base :: titulo('Cadastrar')}"></div>
+		
+            <form action="#" th:action="@{/participante/novo}" th:object="${participante}" method="post">
+                <div>
+                    <label for="nome">Nome</label>
+                    <input type="text" th:field="*{nome}" id="nome" placeholder="Nome" required>
+                    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                </div>
+                <div>
+                    <label for="seguroSocial">Seguro Social</label>
+                    <input type="text" maxlength="9" pattern="[0-9]+$" th:field="*{seguroSocial}" id="seguroSocial"
+                    	data-inputmask="'mask': '999-99-9999'"
+                    	 placeholder="Seguro Social" required> *Apenas números
+                    <span th:if="${#fields.hasErrors('seguroSocial')}" th:errors="*{seguroSocial}"></span>
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" th:field="*{email}" id="email" placeholder="E-mail" required>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
+                <div>
+				</div>                
+                 <input type="submit" value="Cadastrar">   
+            </form>
+
+		</div>
+	</body>
+</html>

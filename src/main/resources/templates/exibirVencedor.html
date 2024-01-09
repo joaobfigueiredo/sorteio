@@ -1,0 +1,19 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+	
+		<div class="container">
+			<div th:replace="~{base :: titulo('Vencedor')}"></div>
+			
+			
+			<h1>O número vencedor foi:[[${participante.id}]]</h1>
+					
+			<p>Dados do participante vencedor:</p>
+			<p>Nome: [[${participante.nome}]]</p>
+			<p>Número do seguro social: [[${participante.seguroSocial}]]</p>
+			<p>E-mail: [[${participante.email}]]</p>
+		
+		</div>
+	</body>
+</html>
