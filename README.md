@@ -19,9 +19,11 @@ Se for desejavel a troca dessa senha, basta acessar alguma ferramenta que realiz
 
 ```sql
 update `sorteio`.`users` set  `password` = '[senha criptrografada]' where `username` = 'joao'
+```
 
 Outra opção será incluir um novo usuário administrador, lembrando que é necessário incluir o registro referente ao novo usuário na tabela 'authorities'
 
 ```sql
 INSERT INTO `sorteio`.`users` (`username`, `enabled`, `password`) VALUES ('[nome do usuario]', b'1', '[senha criptrografada]');
 INSERT INTO `sorteio`.`authorities` (`username`, `authority`) VALUES ('[nome do usuario]', 'ROLE_ADM');
+```
