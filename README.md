@@ -12,10 +12,16 @@ Sistema para realizar sorteio de um veículo, com cadastro de participantes. Usu
 6. Executar Tomcat
 7. Entrar com a URL http://localhost:8080/ no navegador de preferência;
 
-## Observação sobre usuario administrador
+## Observação sobre usuário administrador
 
 No arquivo db.sql o usuario administrador tem como senha Teste@123 criptrografada.
 Se for desejavel a troca dessa senha, basta acessar alguma ferramenta que realiza a criptrografica e atualizar a tabela users com o script a baixo
 
 ```sql
 update `sorteio`.`users` set  `password` = '[senha criptrografada]' where `username` = 'joao'
+
+Outra opção será incluir um novo usuário administrador, lembrando que é necessário incluir o registro referente ao novo usuário na tabela 'authorities'
+
+```sql
+INSERT INTO `sorteio`.`users` (`username`, `enabled`, `password`) VALUES ('[nome do usuario]', b'1', '[senha criptrografada]');
+INSERT INTO `sorteio`.`authorities` (`username`, `authority`) VALUES ('[nome do usuario]', 'ROLE_ADM');
